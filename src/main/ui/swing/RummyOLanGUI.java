@@ -4,6 +4,13 @@
  */
 package ui.swing;
 
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.UnknownHostException;
+
+import network.FetchMyIPv4Address;
+import network.ListenOnAPort;
+
 /**
  *
  * @author Dr. Vijaya
@@ -27,6 +34,7 @@ public class RummyOLanGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         hostGameButton = new javax.swing.JButton();
+        hostDetailsLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("rummy-o-lan");
@@ -44,13 +52,17 @@ public class RummyOLanGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
-                .addComponent(hostGameButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(hostDetailsLabel)
+                    .addComponent(hostGameButton))
                 .addContainerGap(242, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(241, Short.MAX_VALUE)
+                .addGap(111, 111, 111)
+                .addComponent(hostDetailsLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                 .addComponent(hostGameButton)
                 .addGap(37, 37, 37))
         );
@@ -60,7 +72,25 @@ public class RummyOLanGUI extends javax.swing.JFrame {
 
     private void hostGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hostGameButtonActionPerformed
         // TODO add your handling code here:
+    	String hostIP = null;
+    	try {
+			hostIP = FetchMyIPv4Address.fetchMyIPv4Address();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	int serverListenPort = 0;
+    	try {
+			ServerSocket serverSocket = ListenOnAPort.listenOnAPort();
+			serverListenPort = serverSocket.getLocalPort();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
         hostGameButton.setEnabled(false);
+        hostDetailsLabel.setText("Host Details - " + hostIP + ":" + serverListenPort);
     }//GEN-LAST:event_hostGameButtonActionPerformed
 
     /**
@@ -99,6 +129,7 @@ public class RummyOLanGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel hostDetailsLabel;
     private javax.swing.JButton hostGameButton;
     // End of variables declaration//GEN-END:variables
 }
