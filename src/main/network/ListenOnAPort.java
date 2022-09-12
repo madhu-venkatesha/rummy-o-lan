@@ -6,7 +6,9 @@ import java.net.ServerSocket;
 public class ListenOnAPort {
 
 	public static ServerSocket listenOnAPort() throws IOException {
-		return new ServerSocket(0);
+		try (ServerSocket serverSocket = new ServerSocket(0)) {
+			return serverSocket;
+		}
 	}
 
 }
