@@ -4,11 +4,9 @@
  */
 package ui.swing;
 
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.UnknownHostException;
-import network.FetchMyIPv4Address;
-import network.ListenOnAPort;
+import javax.swing.JFrame;
+
+import util.ThreadUtil;
 
 /**
  *
@@ -16,13 +14,20 @@ import network.ListenOnAPort;
  */
 public class HomePanel extends javax.swing.JPanel {
 
+    private JFrame rummyOLan;
+
     /**
      * Creates new form HomePanel
      */
-    public HomePanel() {
+    public HomePanel() {//TODO make private?
         initComponents();
     }
 
+    public HomePanel(JFrame rummyOLan) {
+        this();
+        this.rummyOLan = rummyOLan;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,7 +38,6 @@ public class HomePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         hostGameButton = new javax.swing.JButton();
-        hostDetailsLabel = new javax.swing.JLabel();
 
         hostGameButton.setText("Host Game");
         hostGameButton.addActionListener(new java.awt.event.ActionListener() {
@@ -48,53 +52,24 @@ public class HomePanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(80, 80, 80)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hostDetailsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(hostGameButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(hostGameButton)
+                .addContainerGap(231, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(119, Short.MAX_VALUE)
-                .addComponent(hostDetailsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97)
+                .addContainerGap(239, Short.MAX_VALUE)
                 .addComponent(hostGameButton)
                 .addGap(40, 40, 40))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {hostDetailsLabel, hostGameButton});
-
     }// </editor-fold>//GEN-END:initComponents
 
     private void hostGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hostGameButtonActionPerformed
-        // TODO add your handling code here:
-        String hostIP = null;
-        try {
-            hostIP = FetchMyIPv4Address.fetchMyIPv4Address();
-        } catch (UnknownHostException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        int serverListenPort = 0;
-        try {
-            ServerSocket serverSocket = ListenOnAPort.listenOnAPort();
-            serverListenPort = serverSocket.getLocalPort();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        hostGameButton.setEnabled(false);
-        hostDetailsLabel.setText("Host Details - " + hostIP + ":" + serverListenPort);
+//    	rummyOLan.setContentPane(new GameSettingsPanel(rummyOLan));
+        ThreadUtil.startNewThread(() -> rummyOLan.setContentPane(new GameSettingsPanel(rummyOLan)));        
     }//GEN-LAST:event_hostGameButtonActionPerformed
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel hostDetailsLabel;
+	// Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton hostGameButton;
     // End of variables declaration//GEN-END:variables
 }
