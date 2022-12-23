@@ -67,6 +67,7 @@ public class HomePanel extends javax.swing.JPanel {
     private void hostGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hostGameButtonActionPerformed
 //    	rummyOLan.setContentPane(new GameSettingsPanel(rummyOLan));
         ThreadUtil.startNewThread(() -> rummyOLan.setContentPane(new GameSettingsPanel(rummyOLan)));        
+//    	SwingUtil.invokeAndWait(() -> rummyOLan.setContentPane(new GameSettingsPanel(rummyOLan)));
     }//GEN-LAST:event_hostGameButtonActionPerformed
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
