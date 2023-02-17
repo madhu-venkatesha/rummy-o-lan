@@ -101,9 +101,10 @@ public class GameSettingsPanel extends javax.swing.JPanel {
         String hostDetails = "Host Details - " + hostIP + ":" + serverListenPort;
         Property.value.put(Property.Key.HOST_DETAILS, hostDetails);
         
-//        rummyOLan.setContentPane(new HostDetailsPanel());
+        rummyOLan.setContentPane(new HostDetailsPanel());
+        rummyOLan.pack();
         
-        ThreadUtil.startNewThread(() -> rummyOLan.setContentPane(new HostDetailsPanel()));
+//        ThreadUtil.startNewThread(() -> rummyOLan.setContentPane(new HostDetailsPanel()));
     }//GEN-LAST:event_hostButtonActionPerformed
 
 
