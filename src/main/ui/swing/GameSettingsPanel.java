@@ -13,7 +13,6 @@ import javax.swing.JFrame;
 import network.FetchMyIPv4Address;
 import network.ListenOnAPort;
 import util.Property;
-import util.ThreadUtil;
 
 /**
  *
@@ -26,7 +25,7 @@ public class GameSettingsPanel extends javax.swing.JPanel {
     /**
      * Creates new form HostGameOnClickPanel
      */
-    public GameSettingsPanel() {//TODO make private?
+    private GameSettingsPanel() {
         initComponents();
     }
 
@@ -80,7 +79,6 @@ public class GameSettingsPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void hostButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hostButtonActionPerformed
-        // TODO add your handling code here:
         String hostIP = null;
         try {
             hostIP = FetchMyIPv4Address.fetchMyIPv4Address();
