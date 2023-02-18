@@ -47,6 +47,8 @@ public class GameSettingsPanel extends javax.swing.JPanel {
         gameSettingsLabel = new javax.swing.JLabel();
         hostButton = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(400, 350));
+
         gameSettingsLabel.setToolTipText("");
 
         hostButton.setText("Host");

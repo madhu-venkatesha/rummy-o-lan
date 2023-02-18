@@ -37,6 +37,8 @@ public class HomePanel extends javax.swing.JPanel {
 
         hostGameButton = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(400, 350));
+
         hostGameButton.setText("Host Game");
         hostGameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,16 +51,16 @@ public class HomePanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addGap(41, 41, 41)
                 .addComponent(hostGameButton)
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addContainerGap(270, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(239, Short.MAX_VALUE)
+                .addContainerGap(241, Short.MAX_VALUE)
                 .addComponent(hostGameButton)
-                .addGap(40, 40, 40))
+                .addGap(41, 41, 41))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -67,7 +69,7 @@ public class HomePanel extends javax.swing.JPanel {
     	rummyOLan.pack();
     }//GEN-LAST:event_hostGameButtonActionPerformed
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton hostGameButton;
     // End of variables declaration//GEN-END:variables
 }
