@@ -78,14 +78,11 @@ public class RummyOLan extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {//TODO lambda
-            public void run() {
-                final RummyOLan rummyOLan = new RummyOLan();
-                rummyOLan.setVisible(true);
-                
-                HomePanel homePanel = new HomePanel(rummyOLan);
-                rummyOLan.setContentPane(homePanel);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+	        final RummyOLan rummyOLan = new RummyOLan();
+	        rummyOLan.setVisible(true);
+	        
+	        rummyOLan.setContentPane(new HomePanel(rummyOLan));
         });
     }
 
