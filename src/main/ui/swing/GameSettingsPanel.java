@@ -26,14 +26,14 @@ public class GameSettingsPanel extends javax.swing.JPanel {
     /**
      * Creates new form HostGameOnClickPanel
      */
-    public GameSettingsPanel() {
+    public GameSettingsPanel() {//TODO make private?
         initComponents();
-        setGameSettingsLabelText();
     }
 
     public GameSettingsPanel(JFrame rummyOLan) {
         this();
         this.rummyOLan = rummyOLan;
+        setGameSettingsLabelText();
     }
     
     /**
@@ -103,8 +103,6 @@ public class GameSettingsPanel extends javax.swing.JPanel {
         
         rummyOLan.setContentPane(new HostDetailsPanel());
         rummyOLan.pack();
-        
-//        ThreadUtil.startNewThread(() -> rummyOLan.setContentPane(new HostDetailsPanel()));
     }//GEN-LAST:event_hostButtonActionPerformed
 
 
