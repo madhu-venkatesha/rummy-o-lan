@@ -17,7 +17,7 @@ public class HomePanel extends javax.swing.JPanel {
     /**
      * Creates new form HomePanel
      */
-    public HomePanel() {//TODO make private?
+    private HomePanel() {
         initComponents();
     }
 
