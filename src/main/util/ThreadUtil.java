@@ -8,6 +8,7 @@ package util;
  *
  * @author PRINCIPAL
  */
+@Deprecated
 public class ThreadUtil {
 
 	public static void startNewThread(Runnable runnable) {
