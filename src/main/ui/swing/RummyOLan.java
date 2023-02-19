@@ -28,7 +28,6 @@ public class RummyOLan extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("rummy-o-lan");
-        setPreferredSize(new java.awt.Dimension(400, 350));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,6 +83,7 @@ public class RummyOLan extends javax.swing.JFrame {
 	        rummyOLan.setVisible(true);
 	        
 	        rummyOLan.setContentPane(new HomePanel(rummyOLan));
+	        rummyOLan.pack();
         });
     }
 

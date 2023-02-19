@@ -37,7 +37,7 @@ public class HomePanel extends javax.swing.JPanel {
 
         hostGameButton = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(400, 350));
+        setPreferredSize(new java.awt.Dimension(400, 300));
 
         hostGameButton.setText("Host Game");
         hostGameButton.addActionListener(new java.awt.event.ActionListener() {
